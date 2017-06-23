@@ -1,12 +1,10 @@
-import Html exposing (..)
+-- MODEL
 
-name : String
-name = "Elm"
+type alias Model =
+  { nameInput : String
+  , isHidden: Bool
+  }
 
-
-greet : String -> String
-greet name =
-  "Hello, " ++ name
-
-main =
-  text (greet name)
+type Msg
+  = ToggleVisibility
+  | NewInput String

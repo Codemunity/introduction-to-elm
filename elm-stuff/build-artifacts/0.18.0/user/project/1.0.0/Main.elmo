@@ -1,7 +1,8 @@
-var _user$project$Main$greet = function (name) {
-	return A2(_elm_lang$core$Basics_ops['++'], 'Hello, ', name);
+var _user$project$Main$Model = F2(
+	function (a, b) {
+		return {nameInput: a, isHidden: b};
+	});
+var _user$project$Main$NewInput = function (a) {
+	return {ctor: 'NewInput', _0: a};
 };
-var _user$project$Main$name = 'Elm';
-var _user$project$Main$main = _elm_lang$virtual_dom$Native_VirtualDom.staticProgram(
-	_elm_lang$html$Html$text(
-		_user$project$Main$greet(_user$project$Main$name)));
+var _user$project$Main$ToggleVisibility = {ctor: 'ToggleVisibility'};
