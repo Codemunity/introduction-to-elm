@@ -8,3 +8,13 @@ type alias Model =
 type Msg
   = ToggleVisibility
   | NewInput String
+
+-- VIEW
+
+view : Model -> Html Msg
+view =
+  div [ class "container" ]
+    [ input [ type_ "text", onInput NewInput, placeholder "Name" ] []
+    , button [ onClick ToggleVisibility ] [ text "Toggle Visibility" ]
+    , p [ hidden model.isHidden ] [ text ("Hello, " ++ model.nameInput) ]
+    ]
