@@ -1,4 +1,17 @@
+import Html exposing (..)
+import Html.Attributes exposing (..)
+import Html.Events exposing (..)
+
+main =
+  Html.beginnerProgram
+    { model = initialModel
+    , update = update
+    , view = view
+    }
+
 -- MODEL
+
+initialModel = Model "" True
 
 type alias Model =
   { nameInput : String
