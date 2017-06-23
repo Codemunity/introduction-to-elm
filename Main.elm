@@ -18,3 +18,13 @@ view =
     , button [ onClick ToggleVisibility ] [ text "Toggle Visibility" ]
     , p [ hidden model.isHidden ] [ text ("Hello, " ++ model.nameInput) ]
     ]
+
+-- UPDATE
+
+update : Msg -> Model -> Model
+update msg model =
+  case msg of
+    ToggleVisibility ->
+      { model | isHidden = not model.isHidden }
+    NewInput name ->
+      { model | nameInput = name }
