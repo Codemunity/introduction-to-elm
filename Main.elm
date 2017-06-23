@@ -12,7 +12,7 @@ type Msg
 -- VIEW
 
 view : Model -> Html Msg
-view =
+view model =
   div [ class "container" ]
     [ input [ type_ "text", onInput NewInput, placeholder "Name" ] []
     , button [ onClick ToggleVisibility ] [ text "Toggle Visibility" ]
