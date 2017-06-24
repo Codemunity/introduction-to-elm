@@ -43,6 +43,30 @@ errorView : String -> Html Msg
 errorView error =
   li [] [ text error ]
 
+-- UPDATE
+
+update : Msg -> Model -> Model
+update msg model =
+  case msg of
+    NewEmail email ->
+      let
+          newModel =
+            { model | emailInput = email }
+      in
+          { newModel | errorMessages = validateForm newModel }
+    NewPassword password ->
+      let
+          newModel =
+            { model | passwordInput = password }
+      in
+          { newModel | errorMessages = validateForm newModel }
+    NewConfirmPassword password ->
+      let
+          newModel =
+            { model | confirmPasswordInput = password }
+      in
+          { newModel | errorMessages = validateForm newModel }
+
 -- VALIDATION
 
 emptyEmailMsg = "Email must not be empty."
@@ -63,7 +87,7 @@ validateForm model =
       emptyEmailError =
         errorMessage (String.isEmpty model.emailInput) emptyEmailMsg
       invalidEmailError =
-        errorMessage (String.contains "@" model.emailInput) invEmailMsg
+        errorMessage (not (String.contains "@" model.emailInput)) invEmailMsg
       passwordLengthError =
         errorMessage (String.length model.passwordInput < 6) passLengthMsg
       confirmPasswordError =
