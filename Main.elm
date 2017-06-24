@@ -42,3 +42,33 @@ errorsView errors =
 errorView : String -> Html Msg
 errorView error =
   li [] [ text error ]
+
+-- VALIDATION
+
+emptyEmailMsg = "Email must not be empty."
+invEmailMsg = "Email must have a valid format."
+passLengthMsg = "Password must contain at least 6 characters."
+passMatchMsg = "The passwords don't match."
+
+errorMessage : Bool -> String -> String
+errorMessage isInvalid error =
+  if isInvalid then
+    error
+  else
+    ""
+
+validateForm : Model -> List String
+validateForm model =
+  let
+      emptyEmailError =
+        errorMessage (String.isEmpty model.emailInput) emptyEmailMsg
+      invalidEmailError =
+        errorMessage (String.contains "@" model.emailInput) invEmailMsg
+      passwordLengthError =
+        errorMessage (String.length model.passwordInput < 6) passLengthMsg
+      confirmPasswordError =
+        errorMessage (model.passwordInput /= model.confirmPasswordInput) passMatchMsg
+      errors =
+        [ emptyEmailError, invalidEmailError, passwordLengthError, confirmPasswordError ]
+  in
+      List.filter (\error -> not (String.isEmpty error)) errors
