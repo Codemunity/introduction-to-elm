@@ -29,9 +29,9 @@ initialModel =
 view : Model -> Html Msg
 view model =
   div []
-    [ input [ type_ "text", onInput NewEmail, placeholder "Email" ]
-    , input [ type_ "password", onInput NewPassword, placeholder "Password" ]
-    , input [ type_ "password", onInput NewConfirmPassword, placeholder "Confirm Password" ]
+    [ input [ type_ "text", onInput NewEmail, placeholder "Email" ] []
+    , input [ type_ "password", onInput NewPassword, placeholder "Password" ] []
+    , input [ type_ "password", onInput NewConfirmPassword, placeholder "Confirm Password" ] []
     , div [ hidden (List.isEmpty model.errorMessages) ] [ errorsView model.errorMessages ]
     ]
 
